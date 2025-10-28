@@ -9,7 +9,7 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-text transition-colors">
+    <main className="min-h-screen transition-colors">
       <Header />
       <Hero />
       <About />

@@ -11,11 +11,10 @@
 
 .dark {
   /* Dark mode */
-  --background: black;
-  --text: white;
-  --text-light: #a0a0a0;
-  --white: #000000;
-
+  --background: white;
+  --text: black;
+  --text-light: #666666;
+  --white: #ffffff;
 }
 
 
