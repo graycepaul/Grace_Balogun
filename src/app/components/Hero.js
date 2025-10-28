@@ -41,7 +41,7 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="text-base text-gray-500  max-w-2xl"
             >
-              2+ years of experience building enterprise-grade React
+              3+ years of experience building enterprise-grade React
               applications. Proven record in improving user experience metrics
               and streamlining deployment workflows.
             </motion.p>

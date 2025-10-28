@@ -3,13 +3,20 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const stats = [
-  { number: "35%+", label: "Page Load Speed", icon: "⚡" },
+  { number: "35%+", label: "Page Load optimization", icon: "⚡" },
   { number: "40%", label: "Faster Deployment", icon: "🚀" },
-  { number: "30+", label: "Components Built", icon: "🛠️" },
-  { number: "50%", label: "UI Responsiveness", icon: "📱" },
+  { number: "50+", label: "Components Built", icon: "🛠️" },
+  { number: "99%", label: "UI Responsiveness", icon: "📱" },
 ];
 
 const education = [
+  {
+    institution: "FreeCodeCamp",
+    period: "2025",
+    degree: "Back End Development and APIs",
+    achievement: "",
+    icon: "💻",
+  },
   {
     institution: "Tech4Dev Women Techsters Fellowship",
     period: "2023 – 2024",
@@ -100,20 +107,20 @@ export default function About() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-green-900  rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">GE</span>
+                  <span className="text-white font-bold text-lg">GB</span>
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-black ">
                     Grace Balogun
                   </h3>
                   <p className="text-green-800 font-medium">
-                    Frontend Engineering Specialist
+                    Frontend Developer
                   </p>
                 </div>
               </div>
 
               <p className="text-base text-gray-700  leading-relaxed mb-6">
-                With 2+ years of experience building enterprise-grade React
+                With 3+ years of experience building enterprise-grade React
                 applications, I specialize in creating high-performance,
                 scalable frontend architectures. My expertise includes
                 performance optimization, microfrontend architecture, and
@@ -158,7 +165,7 @@ export default function About() {
                   "Proven track record in improving core web vitals and user experience metrics",
                   "Expertise in modern frontend technologies including React, Next.js, and TypeScript",
                   "Strong leadership skills with experience mentoring and leading development teams",
-                  "Focus on clean code, testing, and maintainable architecture",
+                  "Focus on clean code, user experience, testing, and maintainable architecture",
                 ].map((point, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
