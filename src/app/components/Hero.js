@@ -90,7 +90,7 @@ export default function Hero() {
                 className="absolute inset-0 bg-gradient-to-r from-amber-800 to-[#09f0c2]  rounded-full blur-xl opacity-20"
               />
               <Image
-                src="/grayce.jpeg"
+                src="/grayce03.jpeg"
                 alt="Grace Balogun"
                 width={384}
                 height={384}
