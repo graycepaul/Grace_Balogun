@@ -56,7 +56,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#projects"
-                className="bg-green-950  text-white px-8 py-3 rounded-lg font-semibold text-center transition-colors hover:bg-[#0052cc] "
+                className="bg-green-950  text-white px-8 py-3 rounded-lg font-semibold text-center transition-colors hover:bg-[#286034] "
               >
                 View My Work
               </motion.a>

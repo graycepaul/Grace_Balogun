@@ -3,18 +3,12 @@
 :root {
   /* Light mode (default) */
   --background: white;
-  --text: black;
-  --text-light: #666666;
-  --white: #ffffff;
-
 }
 
 .dark {
   /* Dark mode */
-  --background: white;
-  --text: black;
-  --text-light: #666666;
-  --white: #ffffff;
+  --background: #101828;
+ 
 }
 
 
