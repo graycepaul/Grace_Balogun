@@ -1,105 +1,54 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import Image from "next/image";
-
-const projects = [
-  {
-    title: "Hawkeye VisionTek",
-    description:
-      "Re-architected core frontend using React, Next.js, and TypeScript, achieving 35%+ page load speed improvement and 15% reduction in bounce rates.",
-    image: "/projects/hawkeye.jpg",
-    technologies: ["React", "Next.js", "TypeScript", "Redux", "Microfrontends"],
-    links: {
-      live: "https://app.hawkeyevisiontek.com/",
-      website: "https://hawkeyevisiontek.com/",
-    },
-    achievements: [
-      "35%+ page load speed improvement",
-      "40% reduced deployment time",
-      "70% reduction in build errors",
-      "30+ reusable components built",
-    ],
-    impact: "high",
-  },
-  {
-    title: "Coterie AI - Legislative Platform",
-    description:
-      "Implemented fully responsive UI for legislative intelligence platform with 50% improvement in responsiveness and accessibility across all devices.",
-    image: "/projects/coterie.jpg",
-    technologies: ["React", "TypeScript", "REST APIs", "Responsive Design"],
-    links: {
-      live: "https://coterie.ai",
-    },
-    achievements: [
-      "50% UI responsiveness improvement",
-      "Real-time data integration",
-      "Cross-device consistency",
-      "Legislative document processing",
-    ],
-    impact: "medium",
-  },
-  {
-    title: "Mindful Therapy Platform",
-    description:
-      "Developed therapy-focused web application for drug addiction recovery with multi-language support and interactive community forum.",
-    image: "/projects/mindful.jpg",
-    technologies: ["React", "Firebase", "Authentication", "Multi-language"],
-    links: {
-      github: "https://github.com/gravcepaul/mindful-app",
-      live: "https://mindful-app.vercel.app/",
-    },
-    achievements: [
-      "99.8% system uptime",
-      "45% user engagement improvement",
-      "Firebase authentication",
-      "Community forum integration",
-    ],
-    impact: "high",
-  },
-];
+import { projects } from "../data/data";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Projects() {
+  const { theme } = useContext(ThemeContext);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   const getImpactColor = (impact) => {
-    switch (impact) {
-      case "high":
-        return "from-green-900 to-green-700";
-      case "medium":
-        return "from-green-900 to-green-700";
-      default:
-        return "from-amber-700 to-amber-500";
+    if (theme === "dark") {
+      switch (impact) {
+        case "high":
+          return "from-amber-700 to-amber-500";
+        case "medium":
+          return "from-amber-600 to-amber-400";
+        default:
+          return "from-amber-500 to-amber-300";
+      }
+    } else {
+      switch (impact) {
+        case "high":
+          return "from-green-900 to-green-700";
+        case "medium":
+          return "from-green-800 to-green-600";
+        default:
+          return "from-amber-700 to-amber-500";
+      }
     }
   };
 
+  const getImpactBadgeColor = () => {
+    return theme === "dark"
+      ? "bg-gray-800/90 text-gray-200"
+      : "bg-white/90 text-gray-900";
+  };
+
   return (
-    <section id="projects" className="py-20 ">
+    <section
+      id="projects"
+      className={`py-20 ${
+        theme === "dark"
+          ? "bg-gradient-to-b from-gray-900 to-gray-500"
+          : "bg-white"
+      }`}
+    >
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -107,40 +56,59 @@ export default function Projects() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-black  mb-4">
+          <h2
+            className={`text-4xl lg:text-5xl font-bold mb-4 ${
+              theme === "dark" ? "text-white" : "text-black"
+            }`}
+          >
             Featured Projects
           </h2>
-          <p className="text-base text-gray-600  max-w-2xl mx-auto">
+          <p
+            className={`text-base max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
             Enterprise-grade applications delivering measurable performance
             improvements and exceptional user experiences
           </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
               className="group cursor-pointer"
             >
-              <div className="bg-white  rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100  h-full flex flex-col">
+              <div
+                className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border h-full flex flex-col ${
+                  theme === "dark"
+                    ? "bg-gray-800 border-gray-700"
+                    : "bg-white border-gray-100"
+                }`}
+              >
                 {/* Project Header with Gradient */}
                 <div
                   className={`relative h-48 bg-gradient-to-br ${getImpactColor(
                     project.impact
                   )} overflow-hidden`}
                 >
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
+                  <div
+                    className={`absolute inset-0 ${
+                      theme === "dark" ? "bg-black/20" : "bg-black/10"
+                    } group-hover:${
+                      theme === "dark" ? "bg-black/10" : "bg-black/5"
+                    } transition-colors`}
+                  />
 
                   {/* Impact Badge */}
                   <div className="absolute top-4 right-4">
-                    <div className="bg-white/90  backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-900  uppercase tracking-wide">
+                    <div
+                      className={`${getImpactBadgeColor()} backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide`}
+                    >
                       {project.impact} Impact
                     </div>
                   </div>
@@ -178,20 +146,30 @@ export default function Projects() {
 
                 {/* Project Content */}
                 <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-gray-700  mb-4 leading-relaxed flex-1">
+                  <p
+                    className={`mb-4 leading-relaxed flex-1 ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
                     {project.description}
                   </p>
+
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="bg-gray-100  text-gray-700  px-3 py-1 rounded-full text-sm font-medium border border-gray-200 "
+                        className={`px-3 py-1 rounded-full text-sm font-medium border ${
+                          theme === "dark"
+                            ? "bg-gray-700 text-gray-300 border-gray-600"
+                            : "bg-gray-100 text-gray-700 border-gray-200"
+                        }`}
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
+
                   {/* Achievements */}
                   <div className="space-y-3 mb-6">
                     {project.achievements.map(
@@ -200,16 +178,31 @@ export default function Projects() {
                           key={achievementIndex}
                           className="flex items-center space-x-3 group/achievement"
                         >
-                          <div className="w-2 h-2 bg-amber-600  rounded-full flex-shrink-0 group-hover/achievement:scale-150 transition-transform" />
-                          <span className="text-sm text-gray-600  group-hover/achievement:text-gray-700  transition-colors">
+                          <div
+                            className={`w-2 h-2 rounded-full flex-shrink-0 group-hover/achievement:scale-150 transition-transform ${
+                              theme === "dark" ? "bg-amber-500" : "bg-amber-600"
+                            }`}
+                          />
+                          <span
+                            className={`text-sm transition-colors ${
+                              theme === "dark"
+                                ? "text-gray-400 group-hover/achievement:text-gray-300"
+                                : "text-gray-600 group-hover/achievement:text-gray-700"
+                            }`}
+                          >
                             {achievement}
                           </span>
                         </div>
                       )
                     )}
                   </div>
+
                   {/* Links */}
-                  <div className="flex space-x-3 pt-4 border-t border-gray-100 mt-auto">
+                  <div
+                    className={`flex space-x-3 pt-4 border-t mt-auto ${
+                      theme === "dark" ? "border-gray-700" : "border-gray-100"
+                    }`}
+                  >
                     {Object.entries(project.links).map(([key, value]) => (
                       <motion.a
                         key={key}
@@ -220,8 +213,12 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className={`flex-1 text-center py-3 rounded-lg font-semibold transition-all duration-300 capitalize ${
                           key === "live"
-                            ? "bg-green-950  text-white hover:bg-green-800 "
-                            : "bg-gray-100 text-green-800  hover:bg-gray-200  border border-green-700 "
+                            ? theme === "dark"
+                              ? "bg-amber-600 text-white hover:bg-amber-700"
+                              : "bg-green-950 text-white hover:bg-green-800"
+                            : theme === "dark"
+                            ? "bg-gray-700 text-amber-400 hover:bg-gray-600 border border-amber-500"
+                            : "bg-gray-100 text-green-800 hover:bg-gray-200 border border-green-700"
                         }`}
                       >
                         {key === "github" ? (
@@ -249,8 +246,9 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
+
       {/* GitHub CTA */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -260,7 +258,11 @@ export default function Projects() {
       >
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-r  from-black/80 to-green-900 p-8 text-white"
+          className={`p-8 text-white rounded-xl mx-6 ${
+            theme === "dark"
+              ? "bg-gradient-to-r from-amber-900/80 to-gray-800"
+              : "bg-gradient-to-r from-black/80 to-green-900"
+          }`}
         >
           <h3 className="text-2xl font-bold mb-4">Explore More Projects</h3>
           <p className="text-white/90 mb-6 max-w-2xl mx-auto">
@@ -273,7 +275,11 @@ export default function Projects() {
             href="https://github.com/graycepaul"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-3 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold transition-colors hover:bg-gray-100"
+            className={`inline-flex items-center space-x-3 px-8 py-4 rounded-lg font-semibold transition-colors ${
+              theme === "dark"
+                ? "bg-white text-gray-900 hover:bg-gray-200"
+                : "bg-white text-gray-900 hover:bg-gray-100"
+            }`}
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path
