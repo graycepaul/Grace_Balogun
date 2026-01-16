@@ -3,45 +3,12 @@
 import { motion } from "framer-motion";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext, useState } from "react";
-import {
-  Sun,
-  Moon,
-  Menu,
-  X,
-  Github,
-  Linkedin,
-  Mail,
-  FileText,
-} from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import { contactIcons, navItems } from "../data/data";
 
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navItems = ["About", "Experience", "Projects", "Skills", "contact"];
-
-  const contactIcons = [
-    {
-      icon: Github,
-      href: "https://github.com/graycepaul",
-      label: "GitHub",
-    },
-    {
-      icon: Linkedin,
-      href: "http://linkedin.com/in/grace-ewela-salawe",
-      label: "LinkedIn",
-    },
-    {
-      icon: Mail,
-      href: "mailto:graycepaul02@gmail.com",
-      label: "Email",
-    },
-    {
-      icon: FileText,
-      href: "/resume.pdf",
-      label: "Resume",
-    },
-  ];
 
   return (
     <motion.header

@@ -24,7 +24,7 @@ export const metadata = {
     siteName: "Grace Balogun",
     images: [
       {
-        url: "/og.png", // put this in /public/og.png
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Grace Balogun — Frontend Developer",
