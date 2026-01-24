@@ -6,11 +6,11 @@ import { useTheme } from "../hooks/useTheme";
 function Body({ children }) {
   const { theme } = useTheme();
   return (
-    <body className={theme === "dark" ? "dark" : ""}>
+    <div className={theme === "dark" ? "dark" : ""}>
       <div className="bg-white text-gray-900 min-h-screen transition-colors duration-300">
         {children}
       </div>
-    </body>
+    </div>
   );
 }
 
