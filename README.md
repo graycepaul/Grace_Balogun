@@ -47,7 +47,7 @@ The site is intentionally built as a **frontend-only application** to focus on U
 
 To run this project locally:
 
-````bash
+```bash
 git clone https://github.com/graycepaul/Grace_Balogun.git
 cd Grace_Balogun
 npm install
@@ -55,6 +55,6 @@ npm run dev
 
 Then open:
 
-```bash
 http://localhost:3000
-````
+
+```
