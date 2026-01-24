@@ -21,9 +21,9 @@ export default function Header() {
           : "bg-white border-gray-200"
       } border-b backdrop-blur-md bg-opacity-95`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Contact Icons (Left side - replaces logo) */}
+      <nav className=" mx-auto">
+        <div className="flex items-center justify-between h-16 px-4 lg:px-19 w-full">
+          {/* Contact Icons (Left side) */}
           <div className="flex items-center space-x-1">
             {contactIcons.map((item, index) => (
               <motion.a
