@@ -198,7 +198,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Achievements - Clean List */}
+                {/* Achievements */}
                 <div className="px-6 mb-6 flex-1">
                   <h4
                     className={`text-xs font-semibold uppercase tracking-wider mb-4 ${
@@ -216,7 +216,7 @@ export default function Projects() {
                         >
                           <div
                             className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${
-                              theme === "dark" ? "bg-cyan-500" : "bg-cyan-400"
+                              theme === "dark" ? "bg-amber-500" : "bg-amber-400"
                             }`}
                           />
                           <span
@@ -234,7 +234,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Links - Modern Button Group */}
+                {/* Project Links */}
                 <div
                   className={`px-6 pt-6 pb-6 border-t ${
                     theme === "dark" ? "border-gray-800" : "border-gray-100"

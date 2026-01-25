@@ -10,14 +10,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className={`flex items-center my-12 md:my-20 lg:pt-0 max-h-fit ${
+      className={`flex items-center py-12 lg:pt-0 max-h-fit ${
         theme === "dark"
           ? "bg-gradient-to-b from-gray-900 to-gray-700"
           : "bg-white"
       }`}
     >
-      <div className="mx-auto px-6 py-20">
-        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto px-6 pt-20 lg:pt-44 mib h-screen ">
+        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
