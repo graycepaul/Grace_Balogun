@@ -26,13 +26,23 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
       setFormData({ name: "", email: "", message: "" });
-      // Here you would typically send the data to your backend
-    }, 1000);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setIsSubmitting(false);
   };
 
   const handleChange = (e) => {

@@ -116,7 +116,7 @@ export default function Hero() {
                 }`}
               />
               <Image
-                src="/grayce03.jpeg"
+                src="/graycepaul.jpeg"
                 alt="Grace Balogun"
                 width={384}
                 height={384}
