@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { hawkeye, projects } from "../data/data";
 import { CountUp, EASE, Reveal, SplitReveal, Spotlight } from "./motion/primitives";
@@ -54,7 +55,20 @@ function Stat({ value, label, big = false }) {
   );
 }
 
-function ProjectVisual({ mark, index }) {
+function ProjectVisual({ mark, index, image, name }) {
+  if (image) {
+    return (
+      <div className="relative h-[200px] overflow-hidden rounded-[18px] bg-deep">
+        <Image
+          src={image}
+          alt={`${name} app screenshot`}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+        />
+      </div>
+    );
+  }
   return (
     <div className="project-visual relative flex h-[200px] items-end justify-between overflow-hidden rounded-[18px] bg-deep p-5">
       <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
@@ -139,7 +153,7 @@ export default function Work() {
               data-cursor="Visit"
               className="group flex w-full flex-col gap-3.5 rounded-[28px] border border-line bg-panel p-7 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-line2"
             >
-              <ProjectVisual mark={p.mark} index={i} />
+              <ProjectVisual mark={p.mark} index={i} image={p.image} name={p.name} />
               <span className="text-xs font-semibold uppercase text-muted">{p.kind}</span>
               <span className="flex items-center justify-between font-display text-[26px] font-bold">
                 {p.name}
