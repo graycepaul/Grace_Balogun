@@ -1,22 +1,19 @@
-"use client";
-import Header from "./components/Header";
+import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
+import Work from "./components/Work";
+import Journey from "./components/Journey";
 import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-auto">
-      <Header />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
-    </main>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Work />
+        <Journey />
+        <Contact />
+      </main>
+    </>
   );
 }
