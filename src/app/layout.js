@@ -27,7 +27,7 @@ export const metadata = {
   robots: { index: true, follow: true },
 };
 
-export const viewport = { themeColor: "#0C1410" };
+export const viewport = { themeColor: "#0B0B0C" };
 
 export default function RootLayout({ children }) {
   return (
