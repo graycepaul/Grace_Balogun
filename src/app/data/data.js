@@ -69,11 +69,12 @@ export const projects = [
     mark: "Co",
   },
   {
-    name: "Mindful",
-    kind: "Web · 2024",
-    summary: "Recovery-focused therapy app with multi-language support and 99.8% uptime.",
-    link: "https://mindful-app.vercel.app/",
-    mark: "Mi",
+    name: "CulinaVert",
+    kind: "Web · Next.js + Supabase",
+    summary: "Kitchen companion with weekly meal planning, smart grocery lists, recipes and a cooking community.",
+    link: "https://culina-vert.vercel.app/",
+    mark: "Cv",
+    image: "/projects/culinavert.webp",
   },
 ];
 
