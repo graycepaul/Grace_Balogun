@@ -1,54 +1,43 @@
-import { Providers } from "./components/providers";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
+import { IntroProvider } from "./components/motion/Intro";
+import SmoothScroll from "./components/motion/SmoothScroll";
+import Cursor from "./components/motion/Cursor";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk" });
+
+const title = "Grace Balogun · Frontend & Mobile Engineer, Founder of Arbinx";
+const description =
+  "Frontend and mobile engineer with 4+ years in React, Next.js and React Native. Cut Hawkeye's load time by 35%. Building Arbinx end to end.";
 
 export const metadata = {
-  title: {
-    default: "Grace Balogun — Frontend Developer",
-    template: "%s | Grace Balogun",
-  },
-  description:
-    "Frontend developer building high-performance React/Next.js applications. Portfolio, projects, experience, and contact.",
+  title: { default: title, template: "%s | Grace Balogun" },
+  description,
   metadataBase: new URL("https://grace-balogun.vercel.app"),
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    title: "Grace Balogun — Frontend Developer",
-    description:
-      "Frontend developer building high-performance React/Next.js applications. Portfolio, projects, experience, and contact.",
+    title,
+    description,
     siteName: "Grace Balogun",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Grace Balogun — Frontend Developer",
-      },
-    ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Grace Balogun — Frontend Developer",
-    description:
-      "Frontend developer building high-performance React/Next.js applications. Portfolio, projects, experience, and contact.",
-    images: ["/og.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  twitter: { card: "summary_large_image", title, description },
+  robots: { index: true, follow: true },
 };
+
+export const viewport = { themeColor: "#0C1410" };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}  `}>
-        <Providers>{children}</Providers>
+    <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
+      <body>
+        <IntroProvider>
+          <SmoothScroll />
+          <Cursor />
+          {children}
+        </IntroProvider>
       </body>
     </html>
   );
