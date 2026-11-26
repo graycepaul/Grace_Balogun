@@ -44,6 +44,7 @@ export const hawkeye = {
     "Re-architected the core in Next.js and TypeScript, led five developers through a microfrontend migration, and built a 30-component shared library.",
   tags: ["Next.js", "TypeScript", "Redux", "Microfrontends", "Team of 5"],
   link: "https://hawkeyevisiontek.com/",
+  image: "/projects/hawkeye.webp",
   headline: { value: 35, label: "Page load" },
   stats: [
     { value: 70, label: "build errors" },
