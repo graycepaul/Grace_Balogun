@@ -3,7 +3,7 @@ export const site = {
   email: "graycepaul02@gmail.com",
   location: "Nigeria · UTC+1",
   github: "https://github.com/graycepaul",
-  linkedin: "https://www.linkedin.com/in/grace-ewela-salawe",
+  linkedin: "https://www.linkedin.com/in/grace-ewela-balogun",
   resume: "/resume.pdf",
 };
 
