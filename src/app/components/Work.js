@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { hawkeye, projects } from "../data/data";
 import { CountUp, EASE, Reveal, SplitReveal, Spotlight } from "./motion/primitives";
 import { ArrowUpRight } from "./icons";
@@ -80,6 +80,36 @@ function ProjectVisual({ mark, index, image, name }) {
   );
 }
 
+function HawkeyeShot() {
+  const ref = useRef(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const scale = useTransform(scrollYProgress, [0, 0.5], reduce ? [1, 1] : [1.12, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-4%", "4%"]);
+
+  return (
+    <div ref={ref} className="w-full border-b border-line bg-deep px-5 pt-5 md:px-8 md:pt-8">
+      <div className="flex items-center gap-2 px-1 pb-3.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-line2" />
+        <span className="h-2.5 w-2.5 rounded-full bg-line2" />
+        <span className="h-2.5 w-2.5 rounded-full bg-line2" />
+        <span className="ml-2.5 rounded-full bg-ink px-3.5 py-1 text-xs text-muted">hawkeyevisiontek.com</span>
+      </div>
+      <div className="relative aspect-[2000/1081] overflow-hidden rounded-t-[14px] bg-ink">
+        <motion.div className="absolute inset-0" style={{ scale, y }}>
+          <Image
+            src={hawkeye.image}
+            alt="Hawkeye VisionTek homepage with its AI agent panel and live venue map"
+            fill
+            sizes="(max-width: 1280px) 100vw, 1200px"
+            className="object-cover object-top"
+          />
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
 export default function Work() {
   return (
     <section id="work" className="mx-auto flex max-w-[1280px] flex-col gap-8 px-4 pt-32 md:px-8">
@@ -102,6 +132,7 @@ export default function Work() {
           data-cursor="Visit"
           className="group flex flex-wrap overflow-hidden rounded-[28px] border border-line bg-panel transition-colors hover:border-line2"
         >
+          <HawkeyeShot />
           <div className="flex flex-[1_1_420px] flex-col gap-5 p-8 md:p-12">
             <span className="text-[13px] font-semibold uppercase text-muted">{hawkeye.eyebrow}</span>
             <h3 className="font-display text-3xl font-bold tracking-[-0.03em] md:text-[40px] md:leading-[1.05]">
